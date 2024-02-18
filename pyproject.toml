@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "webscrape"
+version = "0.1.0"
+description = ""
+authors = ["motiongorilla <nize.afonya@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+selenium = "^4.17.2"
+chromium = "^0.0.0"
+chromedriver = "^2.24.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
