@@ -32,10 +32,12 @@ def login(url: str):
     # element = driver.find_element("class name", "navbar-brand")
     element = driver.find_element("link text", "Home")
     element.click()
-    time.sleep(2)
+    time.sleep(3)
+    temperature = driver.find_element("id", "displaytimer")
+    with open("./Temperature.txt", 'w') as file:
+        file.write(temperature.text)
 
-    return print(driver.current_url)
-
+    return 0
 def main():
     login(url)
     return 0
