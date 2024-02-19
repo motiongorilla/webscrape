@@ -1,11 +1,9 @@
 from selenium import webdriver
-from selenium.webdriver.edge.service import Service
-
+import time
 
 def get_driver():
-    # service = Service('./msedgedriver')
     # service = webdriver.EdgeService(executable_path="~/code/python_automate/webscrape/msedgedriver")
-# Set options for browser
+    # Set options for browser
     options = webdriver.ChromeOptions()
     options.add_argument("disable-infobars")
     options.add_argument("start-maximized")
@@ -16,13 +14,22 @@ def get_driver():
 
     driver = webdriver.Chrome(options=options)
     driver.get("https://automated.pythonanywhere.com")
+    print(type(driver))
     return driver
 
+def extractText(text: str):
+    """Extract only desired part of the text"""
+    left, right = text.split(":")
+    right.replace(" ", "")
+    return float(right)
 
 def main():
     driver = get_driver()
-    element = driver.find_element(by="xpath",value="/html/body/div[1]/div/h1[1]")
+    time.sleep(2)
+    # element = driver.find_element(by="xpath",value="/html/body/div[1]/div/h1[1]")
+    element = driver.find_element(by="id",value="displaytimer")
     return element
 
 scrape = main()
+print(extractText(scrape.text))
 print(scrape.text)
